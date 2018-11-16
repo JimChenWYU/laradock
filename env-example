@@ -168,6 +168,7 @@ PHP_FPM_FAKETIME=-0
 PHP_WORKER_INSTALL_PGSQL=false
 PHP_WORKER_INSTALL_BCMATH=false
 PHP_WORKER_INSTALL_SOAP=false
+PHP_WORKER_LOG_PATH=./logs/php-worker/
 
 ### NGINX #################################################
 
@@ -199,10 +200,12 @@ MYSQL_PASSWORD=secret
 MYSQL_PORT=3306
 MYSQL_ROOT_PASSWORD=root
 MYSQL_ENTRYPOINT_INITDB=./mysql/docker-entrypoint-initdb.d
+MYSQL_LOG_PATH=./logs/mysql/
 
 ### REDIS #################################################
 
 REDIS_PORT=6379
+REDIS_LOG_PATH=./logs/redis/
 
 ### Percona ###############################################
 
@@ -248,6 +251,7 @@ RABBITMQ_DEFAULT_PASS=guest
 
 ELASTICSEARCH_HOST_HTTP_PORT=9200
 ELASTICSEARCH_HOST_TRANSPORT_PORT=9300
+ELASTICSEARCH_LOG_PATH=./logs/elasticsearch/
 
 ### KIBANA ################################################
 

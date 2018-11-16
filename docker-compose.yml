@@ -182,6 +182,7 @@ services:
           - INSTALL_SOAP=${PHP_WORKER_INSTALL_SOAP}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+        - ${PHP_WORKER_LOG_PATH}:/etc/supervisor/conf.d
         - ./php-worker/supervisord.d:/etc/supervisord.d
       depends_on:
         - workspace
@@ -287,6 +288,7 @@ services:
         - TZ=${WORKSPACE_TIMEZONE}
       volumes:
         - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
+        - ${MYSQL_LOG_PATH}:/var/log/mysql
         - ${MYSQL_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
         - "${MYSQL_PORT}:3306"
@@ -408,6 +410,7 @@ services:
       build: ./redis
       volumes:
         - ${DATA_PATH_HOST}/redis:/data
+        - ${REDIS_LOG_PATH}:/var/log/redis
       ports:
         - "${REDIS_PORT}:6379"
       networks:
@@ -541,6 +544,7 @@ services:
       build: ./elasticsearch
       volumes:
         - elasticsearch:/usr/share/elasticsearch/data
+        - ${ELASTICSEARCH_LOG_PATH}:/usr/share/elasticsearch/logs
       environment:
         - cluster.name=laradock-cluster
         - bootstrap.memory_lock=true
